@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         WhatsNew whatsNew = WhatsNew.newInstance(
                 new WhatsNewItem(WHATS_NEW1_TITLE, WHATS_NEW1_TEXT));
         whatsNew.setButtonBackground(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-        whatsNew.setButtonTextColor(ContextCompat.getColor(this, R.color.white));
+        whatsNew.setButtonTextColor(ContextCompat.getColor(this, R.color.yellow));
         whatsNew.presentAutomatically(this);
 
         // To check for shared profile intents
