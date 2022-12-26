@@ -42,6 +42,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import utils.Utils;
+import utils.networkerrorcheck.NetworkErrorCityDetail;
 
 import static utils.Constants.API_LINK_V2;
 import static utils.Constants.USER_TOKEN;
@@ -252,13 +253,18 @@ public class ShoppingCurrentCityActivity extends AppCompatActivity {
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        showCityName.setVisibility(View.GONE);
+//        animationView.setVisibility(View.VISIBLE);
+//        layout.setVisibility(View.GONE);
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
+
     private void networkError() {
-        showCityName.setVisibility(View.GONE);
-        animationView.setVisibility(View.VISIBLE);
-        layout.setVisibility(View.GONE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        (new NetworkErrorCityDetail(animationView, layout, showCityName)).networkError();
     }
+
     /**
      * Plays the no results animation in the view
      */

@@ -40,6 +40,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import utils.TravelmateSnackbars;
+import utils.networkerrorcheck.*;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -183,12 +184,16 @@ public class MyTripsFragment extends Fragment implements SwipeRefreshLayout.OnRe
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.setVisibility(View.VISIBLE);
+//        swipeRefreshLayout.setRefreshing(false);
+//        my_trips_main_layout.setVisibility(View.GONE);
+//        animationView.playAnimation();
+//    }
+
     private void networkError() {
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.setVisibility(View.VISIBLE);
-        swipeRefreshLayout.setRefreshing(false);
-        my_trips_main_layout.setVisibility(View.GONE);
-        animationView.playAnimation();
+        (new NetworkErrorSwipeRefresh(animationView, swipeRefreshLayout, my_trips_main_layout)).networkError();
     }
 
     /**

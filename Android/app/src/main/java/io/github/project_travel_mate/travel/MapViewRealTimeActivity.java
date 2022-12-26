@@ -51,6 +51,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import utils.GPSTracker;
 import utils.TravelmateSnackbars;
+import utils.networkerrorcheck.NetworkErrorLinearLayout;
 
 import static utils.Constants.API_LINK_V2;
 import static utils.Constants.HERE_API_MODES;
@@ -396,10 +397,15 @@ public class MapViewRealTimeActivity extends AppCompatActivity implements
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        layout.setVisibility(View.GONE);
+//        animationView.setVisibility(View.VISIBLE);
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
+
     private void networkError() {
-        layout.setVisibility(View.GONE);
-        animationView.setVisibility(View.VISIBLE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        (new NetworkErrorLinearLayout(animationView, layout)).networkErrorGone();
     }
+
 }

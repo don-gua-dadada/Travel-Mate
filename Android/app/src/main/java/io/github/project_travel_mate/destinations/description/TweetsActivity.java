@@ -34,6 +34,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import utils.networkerrorcheck.*;
 
 import static utils.Constants.API_LINK_V2;
 import static utils.Constants.EXTRA_MESSAGE_CITY_OBJECT;
@@ -143,9 +144,13 @@ public class TweetsActivity extends AppCompatActivity {
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
+
     private void networkError() {
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        (new NetworkError(animationView)).networkError();
     }
 
     public static Intent getStartIntent(Context context, City city) {

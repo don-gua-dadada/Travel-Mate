@@ -22,4 +22,11 @@ public class NetworkErrorLinearLayout implements INetworkError {
         animationView.playAnimation();
     }
 
+    public void networkErrorGone() {
+        layout.setVisibility(View.GONE);
+        animationView.setVisibility(View.VISIBLE);
+        animationView.setAnimation(R.raw.network_lost);
+        animationView.playAnimation();
+    }
+
 }

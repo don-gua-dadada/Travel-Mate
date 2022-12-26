@@ -32,6 +32,7 @@ import database.AppDataBase;
 import io.github.project_travel_mate.R;
 import io.github.project_travel_mate.destinations.funfacts.FunFactsActivity;
 import objects.City;
+import utils.networkerrorcheck.*;
 
 import static utils.Constants.EXTRA_MESSAGE_CITY_OBJECT;
 import static utils.Constants.EXTRA_MESSAGE_TYPE;
@@ -403,8 +404,12 @@ public class FinalCityInfoActivity extends AppCompatActivity
     /**
      * Plays the network lost animation in the view
      */
+//    public void networkError() {
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
+
     public void networkError() {
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        (new NetworkError(animationView)).networkError();
     }
 }

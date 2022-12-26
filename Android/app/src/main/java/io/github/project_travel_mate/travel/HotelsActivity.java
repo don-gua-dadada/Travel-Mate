@@ -47,6 +47,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import utils.networkerrorcheck.NetworkErrorLinearLayout;
 
 import static utils.Constants.API_LINK_V2;
 import static utils.Constants.USER_TOKEN;
@@ -444,11 +445,15 @@ public class HotelsActivity extends AppCompatActivity implements View.OnClickLis
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        layout.setVisibility(View.GONE);
+//        animationView.setVisibility(View.VISIBLE);
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
+
     private void networkError() {
-        layout.setVisibility(View.GONE);
-        animationView.setVisibility(View.VISIBLE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        (new NetworkErrorLinearLayout(animationView, layout)).networkErrorGone();
     }
 
     /**

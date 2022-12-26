@@ -1,5 +1,16 @@
 package io.github.project_travel_mate.destinations.description;
 
+import static utils.Constants.API_LINK_V2;
+import static utils.Constants.CURRENT_TEMP;
+import static utils.Constants.EXTRA_MESSAGE_CALLED_FROM_UTILITIES;
+import static utils.Constants.EXTRA_MESSAGE_CITY_ID;
+import static utils.Constants.EXTRA_MESSAGE_CITY_NAME;
+import static utils.Constants.EXTRA_MESSAGE_CITY_OBJECT;
+import static utils.Constants.NUM_DAYS;
+import static utils.Constants.USER_TOKEN;
+import static utils.WeatherUtils.fetchDrawableFileResource;
+import static utils.WeatherUtils.getDayOfWeek;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,17 +49,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import static utils.Constants.API_LINK_V2;
-import static utils.Constants.CURRENT_TEMP;
-import static utils.Constants.EXTRA_MESSAGE_CALLED_FROM_UTILITIES;
-import static utils.Constants.EXTRA_MESSAGE_CITY_ID;
-import static utils.Constants.EXTRA_MESSAGE_CITY_NAME;
-import static utils.Constants.EXTRA_MESSAGE_CITY_OBJECT;
-import static utils.Constants.NUM_DAYS;
-import static utils.Constants.USER_TOKEN;
-import static utils.WeatherUtils.fetchDrawableFileResource;
-import static utils.WeatherUtils.getDayOfWeek;
+import utils.networkerrorcheck.*;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -335,9 +336,7 @@ public class WeatherActivity extends AppCompatActivity {
      * Plays the network lost animation in the view
      */
     private void networkError() {
-        animationView.setVisibility(View.VISIBLE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        (new NetworkError(animationView)).networkError();
     }
 
     /**
