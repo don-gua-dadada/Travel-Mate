@@ -55,6 +55,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import utils.mapiconfactory.*;
 
 import static utils.Constants.API_LINK_V2;
 import static utils.Constants.EXTRA_MESSAGE_CITY_OBJECT;
@@ -110,24 +111,30 @@ public class PlacesOnMapActivity extends AppCompatActivity implements
         setTitle(mCity.getNickname());
         mMarker = this.getDrawable(R.drawable.ic_radio_button_checked_orange_24dp);
         mDefaultMarker = this.getDrawable(R.drawable.marker_default);
-        switch (type) {
-            case "restaurant":
-                mMode = "eat-drink";
-                mIcon = R.drawable.restaurant;
-                break;
-            case "hangout":
-                mMode = "going-out,leisure-outdoor";
-                mIcon = R.drawable.hangout;
-                break;
-            case "monument":
-                mMode = "sights-museums";
-                mIcon = R.drawable.monuments;
-                break;
-            default:
-                mMode = "shopping";
-                mIcon = R.drawable.shopping_icon;
-                break;
-        }
+
+        IconCreate icon = new IconCreate();
+        icon.setIcon(type);
+        mMode = icon.getmMode();
+        mIcon = icon.getmIcon();
+
+//        switch (type) {
+//            case "restaurant":
+//                mMode = "eat-drink";
+//                mIcon = R.drawable.restaurant;
+//                break;
+//            case "hangout":
+//                mMode = "going-out,leisure-outdoor";
+//                mIcon = R.drawable.hangout;
+//                break;
+//            case "monument":
+//                mMode = "sights-museums";
+//                mIcon = R.drawable.monuments;
+//                break;
+//            default:
+//                mMode = "shopping";
+//                mIcon = R.drawable.shopping_icon;
+//                break;
+//        }
         getPlaces();
         initMap();
         setTitle("Places");
