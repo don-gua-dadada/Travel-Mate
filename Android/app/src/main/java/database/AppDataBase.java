@@ -48,7 +48,7 @@ public abstract class AppDataBase extends RoomDatabase {
         }
     };
 
-    //migration from database version 1 t o2
+    //migration from database version 1 to 2
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
