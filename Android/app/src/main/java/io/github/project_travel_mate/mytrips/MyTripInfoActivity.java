@@ -69,7 +69,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import utils.TravelmateSnackbars;
-//import utils.NetworkErrorUtils;
+import utils.networkerrorcheck.*;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -272,7 +272,7 @@ public class MyTripInfoActivity extends AppCompatActivity implements TravelmateS
                             String end = ob.optString("end_date", null);
                             String city = ob.getJSONObject("city").getString("city_name");
                             boolean isPublic = ob.getBoolean("is_public");
-                            details.setVisibility(VISIBLE);
+//                            details.setVisibility(VISIBLE);
                             details.setOnClickListener(view -> {
                                 details.setEnabled(false);
                                 getCity(city);
@@ -811,16 +811,15 @@ public class MyTripInfoActivity extends AppCompatActivity implements TravelmateS
     /**
      * Plays the network lost animation in the view
      */
-    private void networkError() {
-        layout.setVisibility(View.INVISIBLE);
-        animationView.setVisibility(VISIBLE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
-    }
 //    private void networkError() {
-//        NetworkErrorUtils net = new NetworkErrorUtils();
-//        net.networkError(layout, animationView);
+//        layout.setVisibility(View.INVISIBLE);
+//        animationView.setVisibility(VISIBLE);
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
 //    }
+    private void networkError() {
+        (new NetworkErrorLinearLayout(animationView, layout)).networkError();
+    }
 
     public static Intent getStartIntent(Context context, Trip trip) {
         Intent intent = new Intent(context, MyTripInfoActivity.class);

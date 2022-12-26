@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
 
@@ -35,7 +34,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import utils.NetworkErrorUtils;
+import utils.networkerrorcheck.*;
 
 import static android.view.View.GONE;
 import static utils.Constants.API_LINK_V2;
@@ -136,9 +135,13 @@ public class CityHistoryActivity extends AppCompatActivity {
 //        animationView.setAnimation(R.raw.network_lost);
 //        animationView.playAnimation();
 //    }
+//    private void networkError() {
+//        NetworkErrorUtils net = new NetworkErrorUtils();
+//        net.networkError(animationView);
+//    }
+
     private void networkError() {
-        NetworkErrorUtils net = new NetworkErrorUtils();
-        net.networkError(animationView);
+        (new NetworkError(animationView)).networkError();
     }
 
     public static Intent getStartIntent(Context context, City city) {

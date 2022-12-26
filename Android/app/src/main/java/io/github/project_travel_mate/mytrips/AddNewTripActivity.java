@@ -46,7 +46,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import utils.NetworkErrorUtils;
+import utils.networkerrorcheck.*;
 import utils.TravelmateSnackbars;
 import utils.Utils;
 
@@ -310,8 +310,7 @@ public class AddNewTripActivity extends AppCompatActivity implements DatePickerD
 //    }
 
     private void networkError() {
-        NetworkErrorUtils net = new NetworkErrorUtils();
-        net.networkError(mLinearLayout, animationView);
+        (new NetworkErrorLinearLayout(animationView, mLinearLayout)).networkError();
     }
 
     @Override
