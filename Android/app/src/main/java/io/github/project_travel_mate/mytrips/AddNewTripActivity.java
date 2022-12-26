@@ -46,6 +46,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import utils.NetworkErrorUtils;
 import utils.TravelmateSnackbars;
 import utils.Utils;
 
@@ -301,11 +302,16 @@ public class AddNewTripActivity extends AppCompatActivity implements DatePickerD
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        mLinearLayout.setVisibility(View.INVISIBLE);
+//        animationView.setVisibility(View.VISIBLE);
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
+
     private void networkError() {
-        mLinearLayout.setVisibility(View.INVISIBLE);
-        animationView.setVisibility(View.VISIBLE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        NetworkErrorUtils net = new NetworkErrorUtils();
+        net.networkError(mLinearLayout, animationView);
     }
 
     @Override

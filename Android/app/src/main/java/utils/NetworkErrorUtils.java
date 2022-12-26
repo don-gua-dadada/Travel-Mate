@@ -8,17 +8,17 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import io.github.project_travel_mate.R;
 
-public class NetworkUtils {
+public class NetworkErrorUtils {
     /**
      * Plays the network lost animation in the view
      */
-    private void networkError(LottieAnimationView animationView) {
+    public void networkError(LottieAnimationView animationView) {
         animationView.setVisibility(View.VISIBLE);
         animationView.setAnimation(R.raw.network_lost);
         animationView.playAnimation();
     }
 
-    private void networkError(LinearLayout layout, LottieAnimationView animationView) {
+    public void networkError(LinearLayout layout, LottieAnimationView animationView) {
         layout.setVisibility(View.INVISIBLE);
         animationView.setVisibility(VISIBLE);
         animationView.setAnimation(R.raw.network_lost);

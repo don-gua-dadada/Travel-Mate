@@ -35,6 +35,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import utils.NetworkErrorUtils;
 
 import static android.view.View.GONE;
 import static utils.Constants.API_LINK_V2;
@@ -130,10 +131,14 @@ public class CityHistoryActivity extends AppCompatActivity {
     /**
      * Plays the network lost animation in the view
      */
+//    private void networkError() {
+//        animationView.setVisibility(View.VISIBLE);
+//        animationView.setAnimation(R.raw.network_lost);
+//        animationView.playAnimation();
+//    }
     private void networkError() {
-        animationView.setVisibility(View.VISIBLE);
-        animationView.setAnimation(R.raw.network_lost);
-        animationView.playAnimation();
+        NetworkErrorUtils net = new NetworkErrorUtils();
+        net.networkError(animationView);
     }
 
     public static Intent getStartIntent(Context context, City city) {
